@@ -6,8 +6,9 @@ Látum A og B vera hlutmengi alsherjarmengisins U. Notið skilgreiningar á meng
 
 ### Svar: 
 Byrjum á því að skilgreina sniðmengi (∩) og mismengi (∖): 
-Sniðmengi A \cap Ber samansett af öllum gildum sem tilheyra bæði hlutmengis A og B. 
+Sniðmengi A \cap B er samansett af öllum gildum sem tilheyra bæði hlutmengis A og B. 
         A \cap B = \{x \in U \mid x \in A \text{ og } x \in B\}
+        
 Mismengi tveggja mengja A og B er mengi þeirra staka sem eru í A en ekki í B.
         A \setminus B = \{x \in U \mid x \in A, x \notin B\}
 
