@@ -8,10 +8,10 @@ $$
 $$
 ### Svar: 
 Byrjum á því að skilgreina sniðmengi (∩) og mismengi (∖): 
-Sniðmengi $A \cap B$ er samansett af öllum gildum sem tilheyra bæði hlutmengis $A$ og $B$. 
+Sniðmengi $A \cap B$ er samansett af öllum gildum sem tilheyra bæði hlutmengis $A$ og $B$, það er táknað með eftirfarandi formúlunni 
         $A \cap B = \{x \in U \mid x \in A \text{ og } x \in B\}$
         
-Mismengi tveggja mengja A og B er mengi þeirra staka sem eru í $A$ en ekki í $B$.
+Mismengi tveggja mengja A og B er mengi þeirra staka sem eru í $A$ en ekki í $B$, samanber formúlunni 
         $A \setminus B = \{x \in U \mid x \in A, x \notin B\}$
 
 Næst skoðum við mengið $A \setminus (A \setminus B)$: Þetta mengi er úr öllum þeim stökum sem tilheyra $A$ en ekki mismenginu $(A∖B)$.
