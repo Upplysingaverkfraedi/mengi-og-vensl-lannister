@@ -12,7 +12,7 @@ Skýrið ítarlega hvað gerir vensl samhverf og andsamhverf og nefnið dæmi. S
 
 ### A
 
-Þegar vensl eru samhverf, þá þýðir það að ef eitt par er í vennslinu, þá er gagnstæða parið líka í því:
+Þegar vensl eru samhverf, þá þýðir það að ef eitt par er í venslinu, þá er gagnstæða parið líka í því:
 
  $$(a, b) \in R \implies (b, a) \in R \text{ fyrir öll } (a, b) \in R$$
 
@@ -40,9 +40,7 @@ Skýrið ítarlega hvað gerir vensl samhverf og andsamhverf og nefnið dæmi. S
 
  Þetta er samhverft þar sem að fyrir hvert par í venslinu gildir að a = b, svo að fyrir hvert par er "andhverfa parið" alltaf til, svo það brýtur ekki reglu um samhverf pör
 
- Þetta er andsamhverft þar sem að það er ekkert tilvik þar sem a er ekki sama gildi og b
-
- Því er venslið bæði samhverft og andsamhverft
+ Þetta er andsamhverft þar sem að það er ekkert tilvik þar sem a er ekki sama gildi og b, því er venslið bæði samhverft og andsamhverft
 
  ### B
 
