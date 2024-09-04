@@ -9,7 +9,7 @@ Sem dæmi ef að $A = \lbrace 1, 2, 3 \rbrace$ þá er $P(A) = \lbrace \emptyset
 $P(P(A))$ er veldismengi af veldismenginu $P(A)$ og inniheldur því öll hlutmengi $P(A)$.
 
 ### Næst skoðum við $P(A) \subseteq P(P(A))$: 
-Til að setninginn sé sönn þá þarf hvert einasta stak í $P(A)$ einnig stak í $P(P(A))$, þ.e.a.s hvert stak í $P(A)$ þarf að vera hlutmengi í $P(P(A))$. 
+Til að setningin sé sönn þá þarf hvert einasta stak í $P(A)$ einnig stak í $P(P(A))$, þ.e.a.s hvert stak í $P(A)$ þarf að vera hlutmengi í $P(P(A))$. 
 
 ### Skoðum dæmi: 
   Látum $A = \lbrace 7 \rbrace$.
