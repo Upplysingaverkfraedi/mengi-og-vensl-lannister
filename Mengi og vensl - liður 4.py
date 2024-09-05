@@ -57,7 +57,8 @@ def athuga_vensli_og_teikna(dd, mm, yyyy):
         for j in range(4):
             if fylki[i][j] == 1:
                 G.add_edge(i+1, j+1)
-
+    
+    # Til að ákveða útlit hnúta
     pos = nx.spring_layout(G)
     nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=2000, font_size=16, font_weight='bold', arrows=True)
     plt.title(f"Örvanet fyrir dagsetninguna {dd:02d}-{mm:02d}-{yyyy}")
