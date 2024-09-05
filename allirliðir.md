@@ -63,7 +63,7 @@ Ef við tökum nú setninguna $P(A) \subseteq P(P(A))$ og niðurstöðurnar að 
 
 Þá er í þessi tilfelli er $P(A)$ ekki hlutmengi af $P(P(A))$, því $\{7\} \in P(A)$ en $\{7\} \notin P(P(A))$. Því getum við fullyrt að $P(A) \subseteq P(P(A))$ er **ekki** alltaf sönn. 
 
-# Liður 3
+# 3. Vensl
 
 ##### Sýnið og skýrið eftirfarandi:
 
@@ -120,15 +120,15 @@ Til dæmis $$\ f: A \to B$$ þar sem A = {1, 2, 3} og B = {a, b} og f = {(1, a),
 
 Sem sagt í stuttu máli, vensl er almennt hugtak sem lýsir samböndum milli staka, þau geta tengst við eitt gildi, mörg önnur eða jafnvel sjálft sig. Fall er sérstakt vensl þar sem að hvert gildi tengist nákvæmlega einu öðru gildi í myndmengi þess.
 
-# Liður 4 
+# 4. Vensl á heiltölum 
 ####  Hægt er að sjá kóðann í skjalinu "Mengi og vensl - liður 4.py". 
 
 ## Útskýra hvernig eigi að keyra kóðann ykkar (og hvaða pakka þarf að setja upp, ef við á).
 
 Fyrst þurfti að setja upp neðantalda pakka til að setja upp verkefnið á réttan hátt
-pip3 install numpy - Það er sérstaklega öflugt fyrir útreikninga á fylkjum og fylkjaröðum.
-pip3 install network - Það er notað til að meðhöndla og greina grafasafn og net. 
-pip3 install matplotlib - Það er notað til að teikna og setja fram sjónræna framsetningu gagna.
+* pip3 install numpy - Það er sérstaklega öflugt fyrir útreikninga á fylkjum og fylkjaröðum.
+* pip3 install network - Það er notað til að meðhöndla og greina grafasafn og net. 
+* pip3 install matplotlib - Það er notað til að teikna og setja fram sjónræna framsetningu gagna.
 
 Síðan til þess að keyra sjálft forritið þarf að skrifa: python "Mengi og vensl - liður 4.py"
 
@@ -174,7 +174,7 @@ Samhverf: False
 Andsamhverf: False
 Gegnvirk: False
 
-![Figure 1](/Figure_1.png)
+![Figure 1](Figure_1.png)
 
 Fylkið fyrir dagsetninguna 27-05-2001 og seed 27052001:
 $$\begin{bmatrix}
@@ -190,7 +190,7 @@ Samhverf: False
 Andsamhverf: False
 Gegnvirk: False
 
-![Figure 2](/Figure_2.png)
+![Figure 2](Figure_2.png)
 
 Fylkið fyrir dagsetninguna 14-07-2003 og seed 14072003:
 
@@ -207,7 +207,7 @@ Samhverf: False
 Andsamhverf: True
 Gegnvirk: False
 
-![Figure 3](/Figure_3.png)
+![Figure 3](Figure_3.png)
 
 Fylkin lýsa nákvæmlega þeim tengingum sem eru sýndar í örvanetinu. Með því að skoða fylkin getum við séð hvaða hnútar eru tengdir í gegnum örvar í sjálfu netinu.
 
