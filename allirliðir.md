@@ -121,85 +121,40 @@ Til dæmis $$\ f: A \to B$$ þar sem A = {1, 2, 3} og B = {a, b} og f = {(1, a),
 Sem sagt í stuttu máli, vensl er almennt hugtak sem lýsir samböndum milli staka, þau geta tengst við eitt gildi, mörg önnur eða jafnvel sjálft sig. Fall er sérstakt vensl þar sem að hvert gildi tengist nákvæmlega einu öðru gildi í myndmengi þess.
 
 # Liður 4 
-####  Hægt er að sjá kóðann betur í skjalinu "Mengi og vensl - liður 4.py". 
+####  Hægt er að sjá kóðann í skjalinu "Mengi og vensl - liður 4.py". 
 
-import numpy as np
-import networkx as nx
-import matplotlib.pyplot as plt
+## Útskýra hvernig eigi að keyra kóðann ykkar (og hvaða pakka þarf að setja upp, ef við á).
 
-def athuga_vensli_og_teikna(dd, mm, yyyy):
-    # Búa til slembifræ út frá dagsetningu
-    seed = int(f"{dd:02}{mm:02}{yyyy}")
-    np.random.seed(seed)
+Fyrst þurfti að setja upp neðantalda pakka til að setja upp verkefnið á réttan hátt
+pip3 install numpy - Það er sérstaklega öflugt fyrir útreikninga á fylkjum og fylkjaröðum.
+pip3 install network - Það er notað til að meðhöndla og greina grafasafn og net. 
+pip3 install matplotlib - Það er notað til að teikna og setja fram sjónræna framsetningu gagna.
 
-    # Búa til 4x4 slembifylki með 0 eða 1
-    fylki = np.random.randint(0, 2, size=(4, 4))
+Síðan til þess að keyra sjálft forritið þarf að skrifa: python "Mengi og vensl - liður 4.py"
 
-    # Endirskrifa dagssetninguna á formið "dd-mm-yyyy"
-    formatted_date = f"{dd:02}-{mm:02}-{yyyy}"
+#### Býr til slembifylki út frá afmælisdögum
+Efst í kóðanum var búið til slembifræ með skipuninni "seed" út frá dagsetningu og 4x4 slembifylki út frá dagsetningum (afmælisdögum hópmeðlima), og voru fylkin skráð með tölunum 0 eða 1. Sett var upp fall með degi, mánuði og ári sem hægt var að setja mismunandi dagsetningar inn fyrir sem gaf út mismunandi fylki sem forritið gat lesið og ályktað hvort væri sjálfhverf, samhverf, andsamhverf eða gegnvirk. 
 
-    # Prenta niðurstöður:
-    print(f"Fylkið fyrir dagsetninguna {formatted_date} og seed {seed}:")
-    print(fylki)
-    print()
+#### Athugar eiginleika fylkja
+Eftir það var sett upp fjögur föll sem athuguðu eiginleika fylkis. 
+* Sjálfhverf fylki: Hvert stak er tengt við sjált sig. Þ.e. sjálfhverf fylki hafa 1 á öllum meginás (þar sem röð og dálkur eru þau sömu, þ.e. i == j). 
+Kóðinn notar listaskilgreiningu með all() sem fer í gegnum öll stök á meginás fylkisins (fylki[i][i]) og athugar hvort þau séu jöfn 1.
+* Samhverf fylki: Ef stak a er tengt við stak b, þá er b tengt við a. Þ.e. Samhverf fylki eru þannig að fyrir alla i og j gildir að fylki[i][j] == fylki[j][i]. Það þýðir að fylkin eru eins og spegilmynd með tilliti til meginássins, (dálkar verða raðir). 
+* Andsamhverf fylki: Ef stak a er tengt við stak b, þá tengist b ekki a. Þ.e. að fyrir öll i og j (þar sem i != j) gildir að fylki[i][j] == -fylki[j][i]. Oftast eru núll á meginásnum (þar sem i == j).
+* Gegnvirk fylki: Ef stak a er tengt við b, og b er tengt við c, þá tengist stak a við c. Þ.e. Fyrir hvert par i, j þar sem bæði fylki[i][j] == 1 og fylki[j][k] == 1, verður fylki[i][k] að vera 1.
 
+#### Prentar og teiknar niðurstöður
+Því næst var búið til örvanet með networkx. 
+G = nx.DiGraph() skapar tómt stefnt net.
 
-    # Sjálfhverf: Sérhvert stak er venslað af sjálfu sér (a ~ a)
-    # Samhverf:  Fyrir öll stök a og b í S gildir (a ~ b <=> b ~ a)
-    # Andsamhverf: Andstæða við samhverft, má aðeins ganga í eina átt (ekki báðar áttir)
-    # Gegnvirk: Fyrir öll a, b og c í X að ef a er venslað við b er venslað við c, þá er a og c tengt. (a=b og b=c --> a=c)
+Tvær lykkjur voru notaðar til að fara í gegnum öll stök fylkisins, þar sem fylki[i][j] == 1 gefur til kynna að það sé tengsl frá hnúti i til hnútar j. Þetta þýðir að það verður til ör (stefnt tengsl) frá i+1 til j+1.
+G.add_edge(i+1, j+1) bætir þessum tengslum við í grafið.
 
-    # Athugar hvort fylkið sé sjálfhverft
-    def er_sjalfhverft(fylki):
-        return all(fylki[i][i] == 1 for i in range(len(fylki)))
+Hnútarnir voru teiknaðir með örvum milli þeirra, þar sem hnútarnir tákna meðlimi í tengslaneti og örvarnar tákna stefnubundin tengsl milli þeirra.
 
-    # Athugar hvort fylkið sé samhverft
-    def er_samhverft(fylki):
-        return np.array_equal(fylki, fylki.T)
+pos = nx.spring_layout(G) var notað til að reikna út staðsetningu hnútanna i+1 og j+1. Það veldur því að hnútarnir dreifast á snyrtilegan hátt í rýminu með tilliti til tengslanna þeirra á milli.
 
-    # Athugar hvort fylkið sé andsamhverft
-    def er_andsamhverft(fylki):
-        return all(fylki[i][j] != fylki[j][i] or fylki[i][j] == 0 for i in range(len(fylki)) for j in range(len(fylki)) if i != j)
-
-    # Athugar hvort fylkið sé gegnvirkt
-    def er_gegnvirkt(fylki):
-        return all(fylki[i][k] == 1 for i in range(len(fylki)) for j in range(len(fylki)) for k in range(len(fylki)) if fylki[i][j] == 1 and fylki[j][k] == 1)
-
-    # Skoða eiginleika venslanna
-    print(f"Fylkið fyrir dagsetninguna {dd:02d}-{mm:02d}-{yyyy}:")
-    print(fylki)
-    print("\nEiginleikar venslanna:")
-    print(f"Sjálfhverf: {er_sjalfhverft(fylki)}")
-    print(f"Samhverf: {er_samhverft(fylki)}")
-    print(f"Andsamhverf: {er_andsamhverft(fylki)}")
-    print(f"Gegnvirk: {er_gegnvirkt(fylki)}")
-    print("=" * 40)
-
-    # Myndræn framsetning á venslunum með örvaneti
-    G = nx.DiGraph()
-
-    for i in range(4):
-        for j in range(4):
-            if fylki[i][j] == 1:
-                G.add_edge(i+1, j+1)
-
-    pos = nx.spring_layout(G)
-    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=2000, font_size=16, font_weight='bold', arrows=True)
-    plt.title(f"Örvanet fyrir dagsetninguna {dd:02d}-{mm:02d}-{yyyy}")
-    plt.show()
-
-#### Afmælisdagar hópmeðlima
-dagsetningar = [
-    (15, 10, 2002),  # 15. október 2002 (Alda)
-    (27, 5, 2001),   # 27. maí 2001 (Elísabet)
-    (14, 7, 2003)    # 14. júlí 2003 (Benni)
-]
-
-#### Keyra fyrir alla afmælisdagsetningar og teikna örvanet
-for dd, mm, yyyy in dagsetningar:
-    athuga_vensli_og_teikna(dd, mm, yyyy)
-
-#### Útkoma og myndir (örvanet)
+### Útkoma og myndir (örvanet)
 
  Hér að neðan má sjá útkomu fyrir hvern afmælisdag:  
 
@@ -254,4 +209,11 @@ Gegnvirk: False
 
 ![Figure 3](/Figure_3.png)
 
-Fylkin lýsir nákvæmlega þeim tengingum sem eru sýndar í örvanetinu. Með því að skoða fylkin getum við séð hvaða hnútar eru tengdir í gegnum örvar í sjálfu netinu.
+Fylkin lýsa nákvæmlega þeim tengingum sem eru sýndar í örvanetinu. Með því að skoða fylkin getum við séð hvaða hnútar eru tengdir í gegnum örvar í sjálfu netinu.
+
+### Niðurstaða
+Þá kemur í ljós að örvanetið er mismunandi eftir ólíkum dagsetningum þar sem þær tengdust við mismunandi örvanet. 
+
+Með því að nota fylki til að tákna tengsl milli hnúta, er verið að sýna hvernig einstaklingar tengjast eða hafa áhrif á hver annan í neti, þar sem tengslin eru stefnubundin. 
+
+
